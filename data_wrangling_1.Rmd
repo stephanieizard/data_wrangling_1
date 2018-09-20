@@ -1,0 +1,58 @@
+---
+title: "data_wrangling_1"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+```
+##Import FAS csv files
+
+Import my CSV file.
+
+```{r}
+litters_data <- read_csv(file = "./data/FAS_litters.csv")
+litters_data = janitor::clean_names(litters_data)
+```
+
+Importing my 2nd csv file
+
+```{r}
+pups_data <- read_csv(file = "./data/FAS_pups.csv")
+pups_data <- janitor::clean_names(pups_data)
+```
+
+##Look at litters data.
+
+```{r}
+head(litters_data)
+tail(litters_data)
+```
+
+Skip some rows; omit variables names
+```{r}
+litters_data = read_csv(file = "./data/FAS_litters.csv",
+  skip = 10, col_names = FALSE)
+```
+Looking at pup csv
+
+```{r}
+pups_data = read_csv(file = "./data/FAS_pups.csv", col_types = "ciiii")
+pups_data = janitor::clean_names(pups_data)
+skimr::skim(pups_data)
+```
+
+##Othr formats
+Read in mlb data
+```{r}
+mlb_data = readxl::read_excel(path = "./data/mlb11.xlsx")
+```
+
+```{r}
+    pups_readr = read.csv("./data/")                         
+
+
+
+
